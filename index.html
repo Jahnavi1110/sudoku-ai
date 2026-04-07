@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AI Sudoku Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🧩 AI Sudoku Generator</h1>
+
+    <div class="controls">
+        <select id="difficulty">
+            <option value="30">Easy</option>
+            <option value="40">Medium</option>
+            <option value="50">Hard</option>
+        </select>
+
+        <button onclick="generateSudoku()">Generate</button>
+        <button onclick="solveSudoku()">Solve</button>
+        <button onclick="giveHint()">Hint</button>
+    </div>
+
+    <div id="board"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
