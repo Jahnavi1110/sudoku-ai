@@ -1,4 +1,5 @@
 let board = [];
+let solution = [];
 
 function createEmptyBoard() {
     board = Array.from({ length: 9 }, () => Array(9).fill(0));
@@ -45,6 +46,9 @@ function generateSudoku() {
     createEmptyBoard();
     solve(board);
 
+    // STORE SOLUTION
+    solution = board.map(row => [...row]);
+
     let difficulty = document.getElementById("difficulty").value;
 
     for (let i = 0; i < difficulty; i++) {
@@ -64,7 +68,6 @@ function drawBoard() {
         for (let col = 0; col < 9; col++) {
             let cell = document.createElement("input");
             cell.value = board[row][col] !== 0 ? board[row][col] : "";
-            cell.disabled = board[row][col] !== 0;
             cell.id = `${row}-${col}`;
             boardDiv.appendChild(cell);
         }
@@ -72,33 +75,16 @@ function drawBoard() {
 }
 
 function solveSudoku() {
-    let tempBoard = getBoardFromUI();
-    solve(tempBoard);
-    board = tempBoard;
+    board = solution.map(row => [...row]);
     drawBoard();
 }
 
-function getBoardFromUI() {
-    let temp = Array.from({ length: 9 }, () => Array(9).fill(0));
-
-    for (let row = 0; row < 9; row++) {
-        for (let col = 0; col < 9; col++) {
-            let val = document.getElementById(`${row}-${col}`).value;
-            temp[row][col] = val ? parseInt(val) : 0;
-        }
-    }
-    return temp;
-}
-
 function giveHint() {
-    let tempBoard = getBoardFromUI();
-    solve(tempBoard);
-
     for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
             let cell = document.getElementById(`${row}-${col}`);
             if (!cell.value) {
-                cell.value = tempBoard[row][col];
+                cell.value = solution[row][col];
                 return;
             }
         }
