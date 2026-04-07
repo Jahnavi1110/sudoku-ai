@@ -1,0 +1,52 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+button, select {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+button {
+    background: #ff7a18;
+    color: white;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    justify-content: center;
+    gap: 3px;
+}
+
+input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+}
+
+input:disabled {
+    background: #ddd;
+    color: black;
+}
